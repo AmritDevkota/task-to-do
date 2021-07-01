@@ -52,3 +52,14 @@ module.exports.getATask = async (req, res, next) => {
     }
     
 }
+
+module.exports.deleteATask = async (req, res, next) => {
+    
+    let taskId = req.params.id;
+    
+    // let task = TaskData.getById(postId);
+    let task = await Task.findOneAndDelete({_id: taskId});
+
+    res.redirect('/all-tasks');
+    
+}

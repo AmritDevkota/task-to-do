@@ -26,6 +26,7 @@
             <th style="height:30px; text-align:left; width:35%">Task id</th>
             <th style="height:30px; text-align:left; width:50%">Titles</th>
             <th style="height:30px; text-align:left; width:15%">Details</th>
+            <th style="height:30px; text-align:left; width:15%">Action</th>
         </tr>
         <% for (let i=0; i < tasks.length; i++) { %>
             
@@ -39,6 +40,9 @@
                 </td>
                 <td>
                     <a href="/task-detail/<%= task.id %>">Read More</a>
+                </td>
+                <td>
+                    <a href="/task-delete/<%= task.id %>">Delete</a>
                 </td>
             </tr>
         <% } %>

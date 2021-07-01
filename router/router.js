@@ -13,6 +13,7 @@ router.get("/new-task", taskController.getCreateTask);
 router.post("/new-task", taskController.postCreateTask);
 router.get("/all-tasks", taskController.getAllTask);
 router.get("/task-detail/:id", taskController.getATask);
+router.get("/task-delete/:id", taskController.deleteATask); // to-do delete
 
 router.get("/sign-up", userController.getSignUpPage);
 router.post("/sign-up", userController.postSignUp);
