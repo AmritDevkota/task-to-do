@@ -1,0 +1,13 @@
+<%- include('include/head', {title: task.title}); %>
+
+<body style="background-color: #bfeef1;">
+    <%- include('include/header'); %>
+
+    <div>
+        <h1> <%= task.title %> </h1>
+    </div>
+    <div>
+        <%= task.body %>
+    </div>
+</body>
+</html>

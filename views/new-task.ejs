@@ -1,0 +1,21 @@
+<%- include('include/head', {title: 'New Post'}); %>
+
+<body style="background-color: #bfeef1;">
+    <%- include('include/header'); %>
+
+    <h1 style="text-align: center;">Create a  new Task</h1>
+
+    <div style="text-align: center;">
+        <form action="" method="post">
+            <label for="title">Title of a task</label><br>
+            <input type="text" id="title" name="title">
+            <br><br>
+            <label for="body">Details of the task</label><br>
+            <textarea name="body" id="body" cols="30" rows="10"></textarea>
+            <br><br>
+            <button type="submit">Create task</button>
+        </form>
+    </div>
+
+</body>
+</html>

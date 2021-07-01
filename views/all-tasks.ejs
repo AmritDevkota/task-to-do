@@ -1,0 +1,47 @@
+<%- include('include/head', {title: 'Things to do!'}); %>
+<body>
+    <%- include('include/header'); %>
+
+    <h1 style="text-align: center;">Things to do!</h1>
+
+    <!-- <div>
+        <% for (let i=0; i < tasks.length; i++) { %>
+            <div>
+                <% let task=tasks[i]; %>
+                <div>
+                    id: <%= task.id %>
+                </div>
+                <div>
+                    title: <%= task.title %>
+                </div>
+                <a href="/task-detail/<%= task.id %>">Read More</a>
+            </div>
+        <% } %>
+    </div> -->
+
+<!-- Table format -->
+
+    <table style="width:50%; margin-left: auto; margin-right: auto;">
+        <tr>
+            <th style="height:30px; text-align:left; width:35%">Task id</th>
+            <th style="height:30px; text-align:left; width:50%">Titles</th>
+            <th style="height:30px; text-align:left; width:15%">Details</th>
+        </tr>
+        <% for (let i=0; i < tasks.length; i++) { %>
+            
+            <% let task=tasks[i]; %>
+            <tr>
+                <td>
+                    <%= task.id %>
+                </td>
+                <td>
+                    <%= task.title %>
+                </td>
+                <td>
+                    <a href="/task-detail/<%= task.id %>">Read More</a>
+                </td>
+            </tr>
+        <% } %>
+        </table>
+</body>
+</html>

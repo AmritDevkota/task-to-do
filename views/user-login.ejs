@@ -1,0 +1,19 @@
+<%- include('include/head', {title: 'Login!'}); %>
+<body style="background-color: #bfeef1;">
+    <%- include('include/header'); %>
+    <h1 style="text-align: center;">Login to your account!</h1>
+
+    <div style="text-align: center;">
+        <form action="" method="post">
+            <label for="email">Enter your Email</label><br>
+            <input type="email" id="email" name="email">
+            <br><br>
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password">
+            <br><br>
+            <button type="submit">Login</button>
+            <button type="reset">Reset</button>
+        </form>
+    </div>
+</body>
+</html>
