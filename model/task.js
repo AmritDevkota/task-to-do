@@ -9,6 +9,14 @@ const taskSchema = new Schema({
 
     body: {
         type: String
+    },
+    taskBy: { 
+        type: Schema.Types.ObjectId, 
+        ref: 'user' 
+    },
+    visibility: {
+        type: String,
+        enum: ["public", "private", "circle"]
     }
 })
 

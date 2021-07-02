@@ -11,12 +11,17 @@ module.exports.postCreateTask = async (req, res, next) => {
 
     let title = req.body.title;
     let body = req.body.body;
+    let visibility = req.body.visibility;
+    
+    let userId = req.session.user._id;
 
     // let task = TaskData.insert(title, body);
     
     let newTask = new Task({
         title: title,
-        body: body
+        body: body,
+        taskBy: userId,
+        visibility: visibility
     })
 
     let task = await newTask.save();
@@ -30,7 +35,7 @@ module.exports.postCreateTask = async (req, res, next) => {
 module.exports.getAllTask = async (req, res, next) => {
     
     // let tasks = TaskData.getAll();
-    let tasks = await Task.find({});
+    let tasks = await Task.find({}).populate('taskBy', 'name');
     res.render('all-tasks', {
         tasks:tasks
     });
@@ -41,7 +46,7 @@ module.exports.getATask = async (req, res, next) => {
     let taskId = req.params.id;
     
     // let task = TaskData.getById(postId);
-    let task = await Task.findOne({_id: taskId});
+    let task = await Task.findOne({_id: taskId}).populate('taskBy', 'name');
 
     if (task){
         res.render('task-detail', {

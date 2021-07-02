@@ -5,9 +5,13 @@
 
     <div>
         <h1> <%= task.title %> </h1>
+        <h2> <%= task.taskBy.name %> </h2>
     </div>
     <div>
         <%= task.body %>
+    </div>
+    <div>
+        <%= task.visibility %>
     </div>
 </body>
 </html>
