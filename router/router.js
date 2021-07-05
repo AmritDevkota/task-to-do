@@ -1,6 +1,7 @@
 const express = require('express');
 
 const isAuth = require('../auth/is-auth.js');
+const authUnauth = require('../auth/auth-unauth');
 
 const homeController = require("../controller/home.js");
 const taskController = require("../controller/task.js");
@@ -11,7 +12,7 @@ const router = express.Router();
 router.get("/", homeController.getHomePage);
 router.get("/new-task", isAuth, taskController.getCreateTask);
 router.post("/new-task", isAuth, taskController.postCreateTask);
-router.get("/all-tasks", taskController.getAllTask);
+router.get("/all-tasks",authUnauth, taskController.getAllTask);
 router.get("/task-detail/:id", taskController.getATask);
 router.get("/task-delete/:id", taskController.deleteATask); // to-do delete
 
