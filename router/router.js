@@ -23,5 +23,6 @@ router.post("/login", userController.postLogin);
 router.get("/logout", userController.getLogout);
 
 router.get("/me", isAuth, userController.getMe);
+router.get("/profile/:userId", userController.getUserProfile);
 
 module.exports = router;
