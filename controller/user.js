@@ -104,7 +104,8 @@ module.exports.getUserProfile = async (req, res, next) => {
 
     res.render('user-profile', {
         user: user,
-        tasks: tasks
+        tasks: tasks,
+        loginUser: req.session.user
     });
 }
 

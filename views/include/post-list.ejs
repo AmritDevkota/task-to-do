@@ -4,7 +4,6 @@
         <th style="height:30px; text-align:left; width:50%">Titles</th>
         <th style="height:30px; text-align:left; width:20%">Task By</th>
         <th style="height:30px; text-align:left; width:10%">Visibility</th>
-        <th style="height:30px; text-align:left; width:10%">Details</th>
         <th style="height:30px; text-align:left; width:5%">Action</th>
     </tr>
 
@@ -16,7 +15,7 @@
                 <%= i + 1 %>
             </td>
             <td>
-                <%= task.title %>
+                <a href="/task-detail/<%= task.id %>"><%= task.title %></a>
             </td>
             <td>
                 <a href="/profile/<%= task.taskBy._id %>"><%= task.taskBy.name %></a>
@@ -25,10 +24,9 @@
                 <%= task.visibility %>
             </td>
             <td>
-                <a href="/task-detail/<%= task.id %>">Read More</a>
-            </td>
-            <td>
+                <% if (loginUser && loginUser._id == task.taskBy._id) { %>
                 <a href="/task-delete/<%= task.id %>">Delete</a>
+                <% } %>
             </td>
         </tr>
     <% } %>

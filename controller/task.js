@@ -50,7 +50,8 @@ module.exports.getAllTask = async (req, res, next) => {
     // let tasks = TaskData.getAll();
     let tasks = await Task.find(query).populate('taskBy', 'name');
     res.render('all-tasks', {
-        tasks:tasks
+        tasks:tasks,
+        loginUser: req.session.user
     });
 }
 
@@ -76,7 +77,7 @@ module.exports.deleteATask = async (req, res, next) => {
     let taskId = req.params.id;
     
     // let task = TaskData.getById(postId);
-    let task = await Task.findOneAndDelete({_id: taskId});
+    let task = await Task.findOneAndDelete({_id: taskId, taskBy: req.session.user._id});
 
     res.redirect('/all-tasks');
     

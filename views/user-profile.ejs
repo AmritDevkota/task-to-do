@@ -3,6 +3,6 @@
     <%- include('include/header'); %>
     <h1 style="text-align: center;"><%= user.name %></h1>
     <br>
-    <%- include('include/post-list', {tasks: tasks}); %>
+    <%- include('include/post-list', {tasks: tasks, loginUser: loginUser}); %>
 </body>
 </html>
