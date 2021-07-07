@@ -6,7 +6,9 @@ const Task = require('../model/task');
 
 
 module.exports.getSignUpPage = (req, res, next) => {
-    res.render('user-sign-up');
+    res.render('user-sign-up', {
+        loginUser: req.session.user
+    });
 }
 
 module.exports.postSignUp = async (req, res, next) => {
@@ -14,6 +16,17 @@ module.exports.postSignUp = async (req, res, next) => {
     let name = req.body.name;
     let email = req.body.email;
     let password = req.body.password;
+
+    let userEx = await User.findOne({
+        email: email
+    })
+    if(userEx){
+        // res.send("The email already exist");
+        res.render('sign-up-email-match', {
+            loginUser: req.session.user
+        });
+        return;
+    }
 
     let newUser = new User({
         name: name,
@@ -24,12 +37,15 @@ module.exports.postSignUp = async (req, res, next) => {
     let user = await newUser.save();
 
     res.render('user-created', {
-        user:user
+        user:user,
+        loginUser: req.session.user
     });
 }
 
 module.exports.getLogin = (req, res, next) => {
-    res.render('user-login');
+    res.render('user-login', {
+        loginUser: req.session.user
+    });
 
 }
 
@@ -43,11 +59,15 @@ module.exports.postLogin = async (req, res, next) => {
     }).lean();
 
     if (!user){
-        return res.render('login-user-not-found')
+        return res.render('login-user-not-found', {
+            loginUser: req.session.user
+        })
     }
 
     if (user.password != password) {
-        return res.render('login-password-not-match')
+        return res.render('login-password-not-match', {
+            loginUser: req.session.user
+        })
     }
 
     req.session.user = {
@@ -56,7 +76,8 @@ module.exports.postLogin = async (req, res, next) => {
     req.session.isLogin = true;
 
     res.render('user-login-successful', {
-        loginUser: user
+        loginUser: user,
+        loginUser: req.session.user
     });
 }
 
@@ -74,7 +95,9 @@ module.exports.getUserProfile = async (req, res, next) => {
         _id: userId
     })
     if (!user){
-        res.render('404')
+        res.render('404'), {
+            loginUser: req.session.user
+        }
         return;
     }
 

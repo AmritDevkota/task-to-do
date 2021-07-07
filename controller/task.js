@@ -2,7 +2,9 @@ const TaskData = require('../data/task');
 const Task = require('../model/task');
 
 module.exports.getCreateTask = (req, res, next) => {
-    res.render('new-task');
+    res.render('new-task', {
+        loginUser: req.session.user
+    });
 }
 
 module.exports.postCreateTask = async (req, res, next) => {
@@ -28,7 +30,8 @@ module.exports.postCreateTask = async (req, res, next) => {
 
 
     res.render('task-created', {
-        task:task
+        task:task,
+        loginUser: req.session.user
     });
 }
 
@@ -64,10 +67,13 @@ module.exports.getATask = async (req, res, next) => {
 
     if (task){
         res.render('task-detail', {
-            task: task
+            task: task,
+            loginUser: req.session.user
         });
     } else {
-        res.render('404')
+        res.render('404', {
+            loginUser: req.session.user
+        })
     }
     
 }

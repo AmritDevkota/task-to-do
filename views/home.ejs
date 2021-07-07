@@ -1,12 +1,10 @@
 <%- include('include/head', {title: 'Node Blog'}); %>
 <body style="background-color: #bfeef1;"> 
-    <%- include('include/header'); %>
+    <%- include('include/header', {loginUser: loginUser}); %>
 
 <% if (user) { %>
     <h1 style="text-align: center;">Welcome! <%- user.name %>.</h1>
-<% } else { %> 
-    <a href="/login">Login</a>
-<% }%>
+<% } %>
 
 <br>
 

@@ -18,6 +18,7 @@ module.exports.getHomePage = async (req, res, next) => {
     let tasks = await Task.find(query).populate('taskBy', 'name');
     res.render('home', {
         user: req.session.user,
+        loginUser: req.session.user,
         tasks: tasks
     });
 }
