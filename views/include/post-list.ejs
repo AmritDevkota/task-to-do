@@ -11,16 +11,16 @@
         
         <% let task=tasks[i]; %>
         <tr>
-            <td>
+            <td style="text-align:center;">
                 <%= i + 1 %>
             </td>
-            <td>
+            <td style="text-align:left;">
                 <a href="/task-detail/<%= task.id %>"><%= task.title %></a>
             </td>
-            <td>
+            <td style="text-align:left;">
                 <a href="/profile/<%= task.taskBy._id %>"><%= task.taskBy.name %></a>
             </td>
-            <td>
+            <td style="text-align:left;">
                 <%= task.visibility %>
             </td>
             <td>
